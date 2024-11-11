@@ -8,7 +8,7 @@ import re
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Импортируем класс GigaChat из новой библиотеки langchain_community
-from langchain_community.chat_models.gigachat import GigaChat
+from    langchain_community.chat_models.gigachat import GigaChat
 
 # Задайте URL-адрес API для GigaChat
 GIGACHAT_API_URL = "https://ngw.devices.sberbank.ru:9443/api/v2/oauth"  # Обновите на правильный URL, если необходимо
@@ -123,4 +123,5 @@ def chat_with_ai():
         return jsonify(error=str(e)), 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=7860)
+    port = int(os.getenv("PORT"))
+    app.run(host='0.0.0.0', port=port)
